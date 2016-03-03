@@ -1,0 +1,77 @@
+---
+- name: Install packages
+  sudo: true
+  apt: pkg={{ item }} state=installed update_cache=yes
+  with_items:
+    # Basics
+    - build-essential
+    - zip
+    - s3cmd
+    - bundler
+    - memcached
+    - redis-server
+    - npm
+    - nodejs-legacy
+    - python-setuptools
+
+    # Database
+    - mysql-server-5.6
+
+    # Web Dev
+    - nginx
+    - php5-cli
+    - php5-fpm
+    - php5-gd
+    - php5-mcrypt
+    - php5-imap
+    - php5-mysql
+    - php5-curl
+    - php5-json
+    - php5-xdebug
+    - php5-redis
+    - php5-memcached
+    - php5-memcache
+    - php5-intl
+    - php-pear
+
+    # Other tools
+    - ruby
+    - ruby-dev
+    - libsqlite3-dev
+    - rubygems
+    - curl
+    - git
+    - swaks
+
+- name: Remove unused packages
+  sudo: true
+  command: apt-get -y autoremove
+
+- name: Set correct timezone
+  copy: src=/usr/share/zoneinfo/{{ timezone }} dest=/etc/localtime owner=root group=root mode=0644
+
+- name: Update timezone
+  template: src=timezone.j2 dest=/etc/timezone
+  notify: update tzdata
+
+- name: Install railsless deploy
+  command: gem install -q --no-verbose --no-ri --no-rdoc railsless-deploy -s http://gemcutter.org
+
+- name: Install composer
+  sudo: true
+  shell: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+  args:
+    creates: /usr/local/bin/composer
+  tags: composer
+
+- name: Install CakePHP 2.x channel
+  sudo: true
+  command: pear channel-discover pear.cakephp.org
+
+- name: Install CakePHP 2.x binaries
+  sudo: true
+  command: pear install cakephp/CakePHP
+
+- name: PHP fpm log permissions
+  file: path=/var/log/php5-fpm.log state=touch mode=0644
+

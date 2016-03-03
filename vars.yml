@@ -1,0 +1,4 @@
+site_root_folder: /vagrant
+nginx_port: 80
+site_index: index.php
+timezone: America/Chicago

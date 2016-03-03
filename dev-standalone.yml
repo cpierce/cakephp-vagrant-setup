@@ -1,0 +1,13 @@
+---
+- hosts: standalone
+
+  vars_files:
+    - vars.yml
+
+  roles:
+    - core
+    - php5
+    - mysql
+    - nginx
+    - mailcatcher
+    - wkhtmltopdf

@@ -1,0 +1,31 @@
+date.timezone = "{{ timezone }}"
+
+max_execution_time = 3600
+memory_limit = 128M
+
+post_max_size = 128M
+upload_max_filesize = 128M
+
+html_errors = On
+display_errors = On
+
+short_open_tag = On
+
+cgi.fix_pathinfo = Off
+
+sendmail_path = /usr/bin/env  catchmail -f no-reply@vagrant.dev
+
+xdebug.cli_color = 1
+
+; sane limits
+xdebug.var_display_max_depth = 5
+xdebug.var_display_max_children = 256
+xdebug.var_display_max_data = 1024
+;
+; ; remote enabled
+xdebug.remote_enable = 1
+xdebug.remote_autostart = On
+xdebug.remote_mode=req
+xdebug.remote_handler=dbgp
+xdebug.remote_host=192.168.33.1
+xdebug.remote_port = 9000

@@ -1,0 +1,45 @@
+server {
+    listen   {{ nginx_port }};
+    server_name  default.dev;
+
+    access_log   /var/log/nginx/default.access.log;
+    error_log    /var/log/nginx/default.error.log error;
+
+    root {{ site_root_folder }}/webroot/;
+
+    index {{ site_index }} index.html index.htm;
+
+    sendfile off;
+
+    client_max_body_size 15M;
+
+    # deny access to git folder
+	location ~ /.git/ {
+		deny all;
+	}
+
+	# deny access to .htaccess files
+	location ~ /\.ht {
+		deny all;
+	}
+
+	location / {
+		try_files $uri $uri/ /{{ site_index }}?$args;
+	}
+
+    location ~ /\. {
+            return 403;
+    }
+
+    location ~* \.php {
+        try_files $uri =404;
+        fastcgi_pass unix:/run/php5-fpm.sock;
+        fastcgi_index {{ site_index }};
+        fastcgi_read_timeout 240s;
+        fastcgi_buffers 16 16k;
+        fastcgi_buffer_size 32k;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+
+}

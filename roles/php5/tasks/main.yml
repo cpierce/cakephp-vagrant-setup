@@ -1,0 +1,16 @@
+---
+- name: Load custom PHP settings
+  template: src=custom.ini.j2 dest=/etc/php5/mods-available/custom.ini owner=root group=root mode=0644
+
+- name: Set custom links for cli
+  file: src=/etc/php5/mods-available/custom.ini dest=/etc/php5/cli/conf.d/30-custom.ini state=link
+
+- name: Set custom links for fpm
+  file: src=/etc/php5/mods-available/custom.ini dest=/etc/php5/fpm/conf.d/30-custom.ini state=link
+
+- name: Enable FPM Pool for www
+  template: src=fpm_www.j2 dest=/etc/php5/fpm/pool.d/www.conf owner=root group=root mode=0664
+
+- name: Restart php5-fpm service
+  sudo: true
+  service: name=php5-fpm state=restarted

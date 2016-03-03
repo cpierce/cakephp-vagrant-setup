@@ -1,0 +1,22 @@
+---
+- name: Create Gemfile
+  template: src=Gemfile.j2 dest=/home/vagrant/Gemfile owner=vagrant group=vagrant mode=0644
+
+- name: Install mailcatcher
+  sudo: true
+  shell: bundle install
+  args:
+    chdir: /home/vagrant
+    creates: /usr/local/bin/mailcatcher
+
+- name: Create mailcatcher service
+  template: src=mailcatcher.service.j2 dest=/lib/systemd/system/mailcatcher.service owner=root group=root mode=0644
+
+- name: Enable mailcatcher service
+  sudo: true
+  command: systemctl enable mailcatcher
+
+- name: Start mailcatcher service
+  sudo: true
+  service: name=mailcatcher state=started
+

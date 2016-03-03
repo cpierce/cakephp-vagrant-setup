@@ -1,0 +1,9 @@
+[Unit]
+Description=Mailcatcher Service
+
+[Service]
+ExecStart=/bin/sh -ec "exec /usr/bin/env $(which mailcatcher) -f -i 0.0.0.0"
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
