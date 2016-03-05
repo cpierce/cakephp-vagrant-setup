@@ -6,9 +6,11 @@
   template: src=default.j2 dest=/etc/nginx/sites-available/default owner=root group=root mode=0644
 
 - name: Add mime type for log
-  sudo: true
+  become: true
+  become_user: root
   shell: /usr/bin/replace "txt;" "txt log;" -- /etc/nginx/mime.types
 
 - name: Restart nginx service
-  sudo: true
+  become: true
+  become_user: root
   service: name=nginx state=restarted

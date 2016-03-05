@@ -1,6 +1,7 @@
 ---
 - name: Install packages
-  sudo: true
+  become: true
+  become_user: root
   apt: pkg={{ item }} state=installed update_cache=yes
   with_items:
     # Basics

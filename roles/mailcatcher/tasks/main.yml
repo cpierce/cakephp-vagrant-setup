@@ -3,7 +3,8 @@
   template: src=Gemfile.j2 dest=/home/vagrant/Gemfile owner=vagrant group=vagrant mode=0644
 
 - name: Install mailcatcher
-  sudo: true
+  become: true
+  become_user: root
   shell: bundle install
   args:
     chdir: /home/vagrant
@@ -13,10 +14,12 @@
   template: src=mailcatcher.service.j2 dest=/lib/systemd/system/mailcatcher.service owner=root group=root mode=0644
 
 - name: Enable mailcatcher service
-  sudo: true
+  become: true
+  become_user: root
   command: systemctl enable mailcatcher
 
 - name: Start mailcatcher service
-  sudo: true
+  become: true
+  become_user: root
   service: name=mailcatcher state=started
 

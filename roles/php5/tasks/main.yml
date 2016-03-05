@@ -12,5 +12,6 @@
   template: src=fpm_www.j2 dest=/etc/php5/fpm/pool.d/www.conf owner=root group=root mode=0664
 
 - name: Restart php5-fpm service
-  sudo: true
+  become: true
+  become_user: root
   service: name=php5-fpm state=restarted
