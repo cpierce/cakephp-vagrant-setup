@@ -1,0 +1,4 @@
+---
+- name: Installing Cake Base archive
+  unarchive: src=https://cdn.csdurant.com/resources/bases/cake3.tar.bz2 dest=/vagrant/ copy=no
+
