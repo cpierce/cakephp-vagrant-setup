@@ -10,5 +10,4 @@
     - mysql
     - nginx
     - mailcatcher
-    - cake
     - wkhtmltopdf

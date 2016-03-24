@@ -45,7 +45,8 @@
     - swaks
 
 - name: Remove unused packages
-  sudo: true
+  become: true
+  become_user: root
   command: apt-get -y autoremove
 
 - name: Set correct timezone
@@ -59,18 +60,21 @@
   command: gem install -q --no-verbose --no-ri --no-rdoc railsless-deploy -s http://gemcutter.org
 
 - name: Install composer
-  sudo: true
+  become: true
+  become_user: root
   shell: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
   args:
     creates: /usr/local/bin/composer
   tags: composer
 
 - name: Install CakePHP 2.x channel
-  sudo: true
+  become: true
+  become_user: root
   command: pear channel-discover pear.cakephp.org
 
 - name: Install CakePHP 2.x binaries
-  sudo: true
+  become: true
+  become_user: root
   command: pear install cakephp/CakePHP
 
 - name: PHP fpm log permissions
