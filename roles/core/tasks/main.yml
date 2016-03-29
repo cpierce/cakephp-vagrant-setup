@@ -67,16 +67,6 @@
     creates: /usr/local/bin/composer
   tags: composer
 
-- name: Install CakePHP 2.x channel
-  become: true
-  become_user: root
-  command: pear channel-discover pear.cakephp.org
-
-- name: Install CakePHP 2.x binaries
-  become: true
-  become_user: root
-  command: pear install cakephp/CakePHP
-
 - name: PHP fpm log permissions
   file: path=/var/log/php5-fpm.log state=touch mode=0644
 
