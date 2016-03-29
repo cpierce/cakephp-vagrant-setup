@@ -1,0 +1,12 @@
+---
+- name: Installing Cake Base archive
+  unarchive: src=https://cdn.csdurant.com/resources/bases/cake3.tgz dest=/vagrant/ copy=no
+
+- name: Create logs directory
+  file: path=/vagrant/logs state=directory mode=0777
+
+- name: Create tmp directory
+  file: path=/vagrant/tmp state=directory mode=0777
+
+- name: app link create
+  file: src=/vagrant/config/app.development.php dest=/vagrant/config/app.php state=link force=yes
