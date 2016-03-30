@@ -135,7 +135,7 @@ end
 VAGRANT_FILE_CONTENTS;
 file_put_contents('Vagrantfile', $vagrant_file);
 
-if ($options['append_host_file']) {
+if ($options['append_host_file'] === true) {
     $hostname_check = hostname_check($options['hostname']);
 
     if (!$hostname_check) {
