@@ -39,6 +39,7 @@ function cmd_line($argv)
     $options['cpu_limit'] = 1;
     $options['memory_limit'] = 1024;
     $options['hostname'] = 'cs.dev';
+    $options['append_host_file'] = true;
 
     foreach ($argv as $key => $val) {
         if (0 === strpos($val, '--ip-address')) {
@@ -73,6 +74,11 @@ function cmd_line($argv)
             }
         }
 
+        if (0 === strpos($val, '--skip-host')) {
+            if (11 === strlen($val)) {
+                $options['append_host_file'] = false;
+            }
+        }
     }
 
     return $options;
@@ -129,7 +135,10 @@ end
 VAGRANT_FILE_CONTENTS;
 file_put_contents('Vagrantfile', $vagrant_file);
 
-$hostname_check = hostname_check($options['hostname']);
-if (!$hostname_check) {
-    echo $options['ip_address'] . '  ' . $options['hostname'] . ' www.' . $options['hostname'];
+if ($options['append_host_file']) {
+    $hostname_check = hostname_check($options['hostname']);
+
+    if (!$hostname_check) {
+        echo $options['ip_address'] . '  ' . $options['hostname'] . ' www.' . $options['hostname'];
+    }
 }
