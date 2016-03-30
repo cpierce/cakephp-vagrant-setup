@@ -1,5 +1,7 @@
 ---
 - name: Installing Cake Base archive
+  become: true
+  become_user: root
   unarchive: src=https://cdn.csdurant.com/resources/bases/cake3.tgz dest=/vagrant/ copy=no
 
 - name: Create logs directory
