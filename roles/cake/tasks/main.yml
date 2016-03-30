@@ -16,7 +16,7 @@
   become: true
   become_user: root
   unarchive: src=https://cdn.csdurant.com/resources/bases/cake3.zip dest=/vagrant/ copy=no
-  when: p.stat.isdir is defined and p.stat.isdir == false
+  when: p.stat.exists == False
 
 - name: Create logs directory
   file: path=/vagrant/logs state=directory mode=0777
