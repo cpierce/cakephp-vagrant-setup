@@ -60,14 +60,14 @@
   command: gem install -q --no-verbose --no-ri --no-rdoc railsless-deploy -s http://gemcutter.org
 
 - name: Download composer
-  become: true
-  become_user: root
   get_url:
     url: https://getcomposer.org/installer
     dest: /tmp/composer-installer.php
     mode: 0755
 
 - name: Install composer
+  become: true
+  become_user: root
   shell: cat /tmp/composer-install.php | php -- --install-dir=/usr/local/bin --filename=composer
   args:
     creates: /usr/local/bin/composer
