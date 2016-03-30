@@ -11,6 +11,24 @@
  */
 
 $options = cmd_line(is_array($argv) ? $argv : []);
+/**
+ * Hostname check
+ *
+ * @param string $hostname
+ *
+ * @return boolean
+ */
+function hostname_check($hostname = null)
+{
+    if (empty($hostname))
+        return false;
+
+    $host_file = file_get_contents('/etc/hosts');
+    if (strpos($host_file, $hostname))
+        return true;
+
+    return false;
+}
 
 /**
  * Process command line arguments
@@ -110,3 +128,8 @@ end
 
 VAGRANT_FILE_CONTENTS;
 file_put_contents('Vagrantfile', $vagrant_file);
+
+$hostname_check = hostname_check($options['hostname']);
+if (!$hostname_check) {
+    echo $options['ip_address'] . '  ' . $options['hostname'] . ' www.' . $options['hostname'];
+}
