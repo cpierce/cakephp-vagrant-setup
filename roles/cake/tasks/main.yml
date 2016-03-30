@@ -1,4 +1,14 @@
 ---
+- name: Install CakePHP 2.x channel
+  become: true
+  become_user: root
+  command: pear channel-discover pear.cakephp.org
+
+- name: Install CakePHP 2.x binaries
+  become: true
+  become_user: root
+  command: pear install cakephp/CakePHP
+
 - stat: path=/vagrant/webroot
   register: p
 
