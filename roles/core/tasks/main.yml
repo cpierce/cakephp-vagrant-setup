@@ -65,7 +65,7 @@
 - name: Install composer
   become: true
   become_user: root
-  shell: php /tmp/composer-isntaller.php --install-dir=/usr/local/bin --filename=composer
+  shell: php /tmp/composer-installer.php --install-dir=/usr/local/bin --filename=composer
   args:
     creates: /usr/local/bin/composer
   tags: composer
