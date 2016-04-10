@@ -139,6 +139,6 @@ if ($options['append_host_file'] === true) {
     $hostname_check = hostname_check($options['hostname']);
 
     if (!$hostname_check) {
-        echo $options['ip_address'] . '  ' . $options['hostname'] . ' www.' . $options['hostname'];
+        echo $options['ip_address'] . '  ' . $options['hostname'] . ' www.' . $options['hostname'] . "\n";
     }
 }
