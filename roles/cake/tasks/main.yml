@@ -25,9 +25,7 @@
   file: path=/vagrant/tmp state=directory mode=0777
 
 - name: app link create
-  file: src=app.development.php dest=app.php state=link force=yes
-  args:
-    chdir: /vagrant/config
+  file: src=/vagrant/config/app.development.php dest=./app.php state=link force=yes
 
 - name: composer update
   become: true
