@@ -3,7 +3,7 @@
 /*
  * Vagrant Setup Script
  *
- * (c) 2016 Computer Services of Durant, Inc.
+ * (c) 2016 Chris Pierce
  * Chris Pierce <cpierce@csdurant.com>
  *
  * For the full copyright and license information, please view the LICENSE
