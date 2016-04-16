@@ -1,2 +1,2 @@
 # Server Playbook
-PHP Development Playbook for Vagrant via Ansible.
+CakePHP Development Playbook for Vagrant via Ansible.
