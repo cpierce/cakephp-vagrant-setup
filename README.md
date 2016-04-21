@@ -6,8 +6,7 @@ This will generate the config files needed to get your vagrant environment setup
 
 - Virtualbox > 5.0
 - Vagrant > 1.8.1
-- Git installed
-- Public Key added to playbooks access
+- Git
 - Root access to your local machine
 
 ## Running the generator
