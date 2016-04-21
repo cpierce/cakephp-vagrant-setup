@@ -17,6 +17,8 @@ To run the generator use the following command:
 $ curl -sS https://raw.githubusercontent.com/cpierce/cakephp-vagrant-setup/master/scripts/vagrant_setup.php | php -- --ip-address 192.168.33.77 --hostname cakephp.dev | sudo tee -a /etc/hosts
 ```
 
+After the Vagrant file is created you can simply use the `vagrant up` command to start provisioning your local environment!
+
 This will install the Vagrantfile you'll need and then also modify your /etc/hosts unless you specify otherwise.  All available options are listed in the table below.
 
 | Option           | Description                                                             | Example                      |
