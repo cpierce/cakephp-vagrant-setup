@@ -38,7 +38,7 @@ function cmd_line($argv)
     $options['ip_address'] = '192.168.33.77';
     $options['cpu_limit'] = 1;
     $options['memory_limit'] = 1024;
-    $options['hostname'] = 'cs.dev';
+    $options['hostname'] = 'cakephp.dev';
     $options['append_host_file'] = true;
 
     foreach ($argv as $key => $val) {
@@ -125,7 +125,7 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
         pip install ansible
         ssh -T git@bitbucket.org -o StrictHostKeyChecking=no
         PYTHONUNBUFFERED=1 ansible-pull \
-            --url=git@bitbucket.org:csdurant/server-playbook.git \
+            --url=git@github.com:cpierce/cakephp-vagrant-setup.git \
             --inventory-file inventories/localhost \
             dev-standalone.yml
     SHELL
