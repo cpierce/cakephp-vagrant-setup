@@ -121,9 +121,7 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
 
     config.vm.provision "shell", inline: <<-SHELL
         apt-get update
-        apt-get install -y -qq git python-dev python-pip
-        pip install markupsafe
-        pip install ansible
+        apt-get install -y -qq ansible
         ssh -T git@bitbucket.org -o StrictHostKeyChecking=no
         PYTHONUNBUFFERED=1 ansible-pull \
             --url=git@github.com:cpierce/cakephp-vagrant-setup.git \

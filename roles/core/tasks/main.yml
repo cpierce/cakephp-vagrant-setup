@@ -17,31 +17,28 @@
     - python-mysqldb
 
     # Database
-    - mysql-server-5.6
+    - mysql-server-5.7
 
     # Web Dev
     - nginx
-    - php5-cli
-    - php5-fpm
-    - php5-gd
-    - php5-mcrypt
-    - php5-imap
-    - php5-mysql
-    - php5-curl
-    - php5-json
-    - php5-xdebug
-    - php5-redis
-    - php5-memcached
-    - php5-intl
+    - php-cli
+    - php-fpm
+    - php-gd
+    - php-mcrypt
+    - php-imap
+    - php-mysql
+    - php-curl
+    - php-json
+    - php-xdebug
+    - php-redis
+    - php-memcached
+    - php-intl
     - php-pear
 
     # Other tools
     - ruby
     - ruby-dev
     - libsqlite3-dev
-    - rubygems
-    - curl
-    - git
     - swaks
 
 - name: Remove unused packages
@@ -71,5 +68,5 @@
   tags: composer
 
 - name: PHP fpm log permissions
-  file: path=/var/log/php5-fpm.log state=touch mode=0644
+  file: path=/var/log/php7.0-fpm.log state=touch mode=0644
 
