@@ -33,6 +33,7 @@
     - php-redis
     - php-memcached
     - php-intl
+    - php-mbstring
     - php-pear
 
     # Other tools
