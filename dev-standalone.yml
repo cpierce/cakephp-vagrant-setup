@@ -6,7 +6,7 @@
 
   roles:
     - core
-    - php5
+    - php
     - mysql
     - nginx
     - mailcatcher
