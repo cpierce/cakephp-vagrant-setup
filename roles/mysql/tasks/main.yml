@@ -6,7 +6,7 @@
   service: name=mysql state=started
 
 - name: Create my_app user
-  mysql_user: name=my_app host_all=yes password=secret priv=*.*:ALL state=present
+  mysql_user: name=my_app password=secret priv=*.*:ALL state=present
 
 - name: Create sites database
   mysql_db: name=my_app state=present
