@@ -87,6 +87,7 @@ function cmd_line($argv)
 $ip_address = $options['ip_address'];
 $memory_limit = $options['memory_limit'];
 $cpu_limit = $options['cpu_limit'];
+$hostname = $options['hostname'];
 
 $vagrant_file = <<<VAGRANT_FILE_CONTENTS
 # -*- mode: ruby -*-
@@ -94,6 +95,7 @@ $vagrant_file = <<<VAGRANT_FILE_CONTENTS
 Vagrant.require_version ">= 1.8.3"
 
 VAGRANT_API_VERSION = "2"
+GUEST_HOSTNAME = "$hostname"
 GUEST_NETWORK_IP = "$ip_address"
 GUEST_MEMORY_LIMIT = "$memory_limit"
 GUEST_CPU_LIMIT = "$cpu_limit"
@@ -105,7 +107,7 @@ GUEST_CPU_LIMIT = "$cpu_limit"
 Vagrant.configure(VAGRANT_API_VERSION) do |config|
 
     config.vm.box = "ubuntu/xenial64"
-
+    config.vm.hostname = GUEST_HOSTNAME
     config.vm.network "private_network", ip: GUEST_NETWORK_IP
 
     # Allow more memory usage for the VM
