@@ -91,7 +91,7 @@ $cpu_limit = $options['cpu_limit'];
 $vagrant_file = <<<VAGRANT_FILE_CONTENTS
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-Vagrant.require_version ">= 1.8.1"
+Vagrant.require_version ">= 1.8.3"
 
 VAGRANT_API_VERSION = "2"
 GUEST_NETWORK_IP = "$ip_address"
@@ -104,7 +104,7 @@ GUEST_CPU_LIMIT = "$cpu_limit"
 
 Vagrant.configure(VAGRANT_API_VERSION) do |config|
 
-    config.vm.box = "boxcutter/ubuntu1504"
+    config.vm.box = "ubuntu/xenial64"
 
     config.vm.network "private_network", ip: GUEST_NETWORK_IP
 
