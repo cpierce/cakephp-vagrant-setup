@@ -14,6 +14,7 @@
     - npm
     - nodejs-legacy
     - python-setuptools
+    - python-mysqldb
 
     # Database
     - mysql-server-5.6

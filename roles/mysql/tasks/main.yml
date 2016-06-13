@@ -5,5 +5,8 @@
 - name: Start MySQL service
   service: name=mysql state=started
 
+- name: Create my_app user
+  mysql_user: name=my_app host_all=yes password=secret priv=*.*:ALL state=present
+
 - name: Create sites database
-  shell: echo 'CREATE DATABASE IF NOT EXISTS dev' | mysql -u root
+  mysql_db: name=my_app state=present
