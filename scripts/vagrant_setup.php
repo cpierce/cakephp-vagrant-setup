@@ -114,6 +114,7 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
     config.vm.provider :virtualbox do |v|
         v.memory = GUEST_MEMORY_LIMIT
         v.cpus = GUEST_CPU_LIMIT
+        v.name = GUEST_HOSTNAME
     end
 
     # forward agent for ansible access
