@@ -39,7 +39,7 @@
 - name: Install packages
   become: true
   become_user: root
-  apt: pkg={{ item }} state=installed update_cache=yes autoremove=yes
+  apt: pkg={{ item }} state=installed update_cache=yes
   with_items:
     # Basics
     - build-essential
@@ -78,6 +78,11 @@
     - ruby-dev
     - libsqlite3-dev
     - swaks
+
+- name: Autoremove packages
+  become: true
+  become_user: root
+  command: apt-get autoremove -y
 
 - name: Set correct timezone
   copy: src=/usr/share/zoneinfo/{{ timezone }} dest=/etc/localtime owner=root group=root mode=0644
