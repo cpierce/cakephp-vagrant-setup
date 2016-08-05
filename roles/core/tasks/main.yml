@@ -1,4 +1,41 @@
 ---
+- name: Check if swap file exists
+  stat:
+    path: /.swap
+  register: swap_file_check
+
+- name: Create Swap file
+  become: true
+  become_user: root
+  command: fallocate -l 2G /.swap
+  when: not swap_file_check.stat.exists
+
+- name: Set Swap permissions
+  become: true
+  become_user: root
+  file:
+    path: /.swap
+    mode: 0600
+
+- name: Format Swap file
+  become: true
+  become_user: root
+  command: mkswap /.swap
+  when: not swap_file_check.stat.exists
+
+- name: Add to fstab
+  become: true
+  become_user: root
+  lineinfile:
+    dest: /etc/fstab
+    regexp: /.swap
+    line: "/.swap none swap sw 0 0"
+
+- name: Turn on Swap
+  become: true
+  become_user: root
+  command: swapon -a
+
 - name: Install packages
   become: true
   become_user: root
@@ -65,4 +102,3 @@
 
 - name: PHP fpm log permissions
   file: path=/var/log/php7.0-fpm.log state=touch mode=0644
-
