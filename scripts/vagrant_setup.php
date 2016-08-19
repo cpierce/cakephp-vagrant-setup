@@ -42,11 +42,11 @@ function cmd_line($argv)
     $options['append_host_file'] = true;
 
     foreach ($argv as $key => $val) {
-        if (0 === strpos($val, '--ip-address')) {
-            if (12 === strlen($val) && isset($argv[$key+1])) {
+        if (0 === strpos($val, '--ip') {
+            if (4 === strlen($val) && isset($argv[$key+1])) {
                 $options['ip_address'] = trim($argv[$key+1]);
             } else {
-                $options['ip_address'] = trim(substr($val, 13));
+                $options['ip_address'] = trim(substr($val, 5));
             }
         }
 
