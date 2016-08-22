@@ -1,13 +1,13 @@
 ---
 - name: Create Gemfile
-  template: src=Gemfile.j2 dest=~/Gemfile owner=ubuntu group=ubuntu mode=0644
+  template: src=Gemfile.j2 dest=/home/vagrant/Gemfile owner=vagrant group=vagrant mode=0644
 
 - name: Install mailcatcher
   become: true
   become_user: root
   shell: bundle install
   args:
-    chdir: /home/ubuntu
+    chdir: /home/vagrant
     creates: /usr/local/bin/mailcatcher
 
 - name: Create mailcatcher service
