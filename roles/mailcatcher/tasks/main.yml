@@ -1,6 +1,6 @@
 ---
 - name: Create Gemfile
-  template: src=Gemfile.j2 dest=/home/ubuntu/Gemfile owner=ubuntu group=ubuntu mode=0644
+  template: src=Gemfile.j2 dest=~/Gemfile owner=ubuntu group=ubuntu mode=0644
 
 - name: Install mailcatcher
   become: true
@@ -22,4 +22,3 @@
   become: true
   become_user: root
   service: name=mailcatcher state=started
-
