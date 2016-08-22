@@ -106,7 +106,7 @@ GUEST_CPU_LIMIT = "$cpu_limit"
 
 Vagrant.configure(VAGRANT_API_VERSION) do |config|
 
-    config.vm.box = "ubuntu/xenial64"
+    config.vm.box = "bento/ubuntu-16.04"
     config.vm.hostname = GUEST_HOSTNAME
     config.vm.network "private_network", ip: GUEST_NETWORK_IP
 
@@ -124,7 +124,7 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
 
     config.vm.provision "shell", inline: <<-SHELL
         apt-get update
-        apt-get install -y -qq ansible
+        apt-get install -y -qq ansible git
         ssh -T git@github.com -o StrictHostKeyChecking=no
         PYTHONUNBUFFERED=1 ansible-pull \
             --url=git@github.com:cpierce/cakephp-vagrant-setup.git \
