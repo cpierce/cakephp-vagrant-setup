@@ -15,7 +15,7 @@
 - name: Installing Cake Base archive
   become: true
   become_user: root
-  unarchive: src=https://files.cpierce.org/resources/bases/cake3.zip dest=/vagrant/ copy=no
+  unarchive: src=curl -sS https://raw.githubusercontent.com/cpierce/cakephp-vagrant-setup/master/resources/bases/cake3.zip dest=/vagrant/ copy=no
   when: p.stat.exists == False
 
 - name: Create logs directory

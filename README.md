@@ -14,7 +14,7 @@ This will generate the config files needed to get your vagrant environment setup
 To run the generator use the following command:
 
 ```
-$ curl -sS https://raw.githubusercontent.com/cpierce/cakephp-vagrant-setup/master/scripts/vagrant_setup.php | php -- --ip 192.168.33.77 --hostname cakephp.dev | sudo tee -a /etc/hosts
+curl -sS https://raw.githubusercontent.com/cpierce/cakephp-vagrant-setup/master/scripts/vagrant_setup.php | php -- --ip 192.168.33.77 --hostname cakephp.dev | sudo tee -a /etc/hosts
 ```
 
 After the Vagrant file is created you can simply use the `vagrant up` command to start provisioning your local environment!
