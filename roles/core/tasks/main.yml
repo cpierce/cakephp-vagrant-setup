@@ -72,6 +72,7 @@
     - php-intl
     - php-mbstring
     - php-pear
+    - php-imagick
 
     # Other tools
     - ruby
