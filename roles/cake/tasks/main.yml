@@ -24,6 +24,9 @@
 - name: Create tmp directory
   file: path=/vagrant/tmp state=directory mode=0777
 
+- name: Create sessions directory
+  file: path=/vagrant/tmp/sessions state=directory mode=0777
+
 - name: app link create
   file: src=app.development.php dest=/vagrant/config/app.php state=link force=yes
 

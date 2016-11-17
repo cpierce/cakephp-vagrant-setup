@@ -68,6 +68,7 @@
     - php-json
     - php-xdebug
     - php-redis
+    - php-imagick
     - php-memcached
     - php-intl
     - php-mbstring
@@ -75,6 +76,7 @@
     - php-imagick
 
     # Other tools
+    - phpunit
     - ruby
     - ruby-dev
     - libsqlite3-dev
