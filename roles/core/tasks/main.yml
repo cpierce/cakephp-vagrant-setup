@@ -61,6 +61,7 @@
     - php-cli
     - php-fpm
     - php-gd
+    - php-sqlite3
     - php-mcrypt
     - php-imap
     - php-mysql
@@ -73,7 +74,6 @@
     - php-intl
     - php-mbstring
     - php-pear
-    - php-imagick
 
     # Other tools
     - phpunit
