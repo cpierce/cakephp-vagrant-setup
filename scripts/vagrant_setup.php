@@ -92,7 +92,7 @@ $hostname = $options['hostname'];
 $vagrant_file = <<<VAGRANT_FILE_CONTENTS
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-Vagrant.require_version ">= 1.8.6"
+Vagrant.require_version ">= 1.9.1"
 
 VAGRANT_API_VERSION = "2"
 GUEST_HOSTNAME = "$hostname"
@@ -109,6 +109,7 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
     config.vm.box = "bento/ubuntu-16.04"
     config.vm.hostname = GUEST_HOSTNAME
     config.vm.network "private_network", ip: GUEST_NETWORK_IP
+    config.vm.network "forwarded_port", guest: 80, host: 8080
 
     # Allow more memory usage for the VM
     config.vm.provider :virtualbox do |v|
