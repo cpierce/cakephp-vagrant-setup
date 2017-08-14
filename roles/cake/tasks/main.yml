@@ -31,8 +31,6 @@
   file: src=app.development.php dest=/vagrant/config/app.php state=link force=yes
 
 - name: composer update
-  become: true
-  become_user: root
   shell: composer update
   args:
     chdir: /vagrant
