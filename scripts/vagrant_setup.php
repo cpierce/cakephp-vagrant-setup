@@ -11,24 +11,6 @@
  */
 
 $options = cmd_line(is_array($argv) ? $argv : []);
-/**
- * Hostname check
- *
- * @param string $hostname
- *
- * @return boolean
- */
-function hostname_check($hostname = null)
-{
-    if (empty($hostname))
-        return false;
-
-    $host_file = file_get_contents('/etc/hosts');
-    if (strpos($host_file, $hostname))
-        return true;
-
-    return false;
-}
 
 /**
  * Process command line arguments
@@ -38,8 +20,7 @@ function cmd_line($argv)
     $options['ip_address'] = '192.168.33.77';
     $options['cpu_limit'] = 1;
     $options['memory_limit'] = 1024;
-    $options['hostname'] = 'cakephp.dev';
-    $options['append_host_file'] = true;
+    $options['hostname'] = 'dev.cpierce.org';
 
     foreach ($argv as $key => $val) {
         if (0 === strpos($val, '--ip')) {
@@ -73,12 +54,6 @@ function cmd_line($argv)
                 $options['hostname'] = trim(substr($val, 11));
             }
         }
-
-        if (0 === strpos($val, '--skip-host')) {
-            if (11 === strlen($val)) {
-                $options['append_host_file'] = false;
-            }
-        }
     }
 
     return $options;
@@ -92,7 +67,7 @@ $hostname = $options['hostname'];
 $vagrant_file = <<<VAGRANT_FILE_CONTENTS
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-Vagrant.require_version ">= 1.9.1"
+Vagrant.require_version ">= 2.0.1"
 
 VAGRANT_API_VERSION = "2"
 GUEST_HOSTNAME = "$hostname"
@@ -137,11 +112,3 @@ end
 
 VAGRANT_FILE_CONTENTS;
 file_put_contents('Vagrantfile', $vagrant_file);
-
-if ($options['append_host_file'] === true) {
-    $hostname_check = hostname_check($options['hostname']);
-
-    if (!$hostname_check) {
-        echo $options['ip_address'] . '  ' . $options['hostname'] . ' www.' . $options['hostname'] . "\n";
-    }
-}
