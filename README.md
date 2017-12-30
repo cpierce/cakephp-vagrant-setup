@@ -19,7 +19,7 @@ curl -sS https://raw.githubusercontent.com/cpierce/cakephp-vagrant-setup/master/
 
 After the Vagrant file is created you can simply use the `vagrant up` command to start provisioning your local environment!
 
-This will install the Vagrantfile you'll need and then also modify your /etc/hosts unless you specify otherwise.  All available options are listed in the table below.
+This will install the Vagrantfile you'll need. All available options are listed in the table below.
 
 | Option           | Description                                                             | Example                      |
 |------------------|-------------------------------------------------------------------------|------------------------------|
