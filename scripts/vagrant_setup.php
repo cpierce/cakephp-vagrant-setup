@@ -96,7 +96,9 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
     # forward agent for ansible access
     config.ssh.forward_agent = true
 
-    config.vm.synced_folder ".", "/vagrant", type: "nfs"
+    config.vm.synced_folder ".", "/vagrant", type: "nfs",
+        :nfs => true,
+        :mount_options => ['actimeo=2']
 
     config.vm.provision "shell", inline: <<-SHELL
         apt-get update
