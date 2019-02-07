@@ -36,11 +36,18 @@
   become_user: root
   command: swapon -a
 
+- name: Update packages
+  apt:
+    upgrade: dist
+    upgrade_cache: yes
+
 - name: Install packages
-  become: true
-  become_user: root
-  apt: pkg={{ item }} state=installed update_cache=yes
-  with_items:
+  apt: 
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+  vars:
+    packages:
     # Basics
     - build-essential
     - zip
@@ -62,7 +69,6 @@
     - php-fpm
     - php-gd
     - php-sqlite3
-    - php-mcrypt
     - php-imap
     - php-mysql
     - php-curl
@@ -84,9 +90,8 @@
     - swaks
 
 - name: Autoremove packages
-  become: true
-  become_user: root
-  command: apt-get autoremove -y
+  apt:
+    autoremove: yes
 
 - name: Set correct timezone
   copy: src=/usr/share/zoneinfo/{{ timezone }} dest=/etc/localtime owner=root group=root mode=0644
