@@ -30,7 +30,7 @@ group = vagrant
 ;                            specific port;
 ;   '/path/to/unix/socket' - to listen on a unix socket.
 ; Note: This value is mandatory.
-listen = /run/php/php7.0-fpm.sock
+listen = /run/php/php7.2-fpm.sock
 
 ; Set listen(2) backlog. A value of '-1' means unlimited.
 ; Default Value: 128 (-1 on FreeBSD and OpenBSD)
@@ -51,7 +51,7 @@ listen.group = www-data
 ; must be separated by a comma. If this value is left blank, connections will be
 ; accepted from any ip address.
 ; Default Value: any
-;listen.allowed_clients = 127.0.0.1
+listen.allowed_clients = 127.0.0.1
 
 ; Choose how the process manager will control the number of child processes.
 ; Possible Values:
@@ -108,7 +108,7 @@ pm.max_children = 10
 ; The number of seconds after which an idle process will be killed.
 ; Note: Used only when pm is set to 'ondemand'
 ; Default Value: 10s
-;pm.process_idle_timeout = 10s;
+pm.process_idle_timeout = 5s;
 
 ; The number of requests each child process should execute before respawning.
 ; This can be useful to work around memory leaks in 3rd party libraries. For

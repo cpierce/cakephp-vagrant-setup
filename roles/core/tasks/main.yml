@@ -49,7 +49,7 @@
     - memcached
     - redis-server
     - npm
-    - nodejs-legacy
+    - nodejs
     - python-setuptools
     - python-mysqldb
 
@@ -110,4 +110,4 @@
   tags: composer
 
 - name: PHP fpm log permissions
-  file: path=/var/log/php7.0-fpm.log state=touch mode=0644
+  file: path=/var/log/php7.2-fpm.log state=touch mode=0644
