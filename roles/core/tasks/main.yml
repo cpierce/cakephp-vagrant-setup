@@ -42,7 +42,7 @@
     update_cache: yes
 
 - name: Install packages
-  apt: 
+  apt:
     name: "{{ packages }}"
     state: present
     update_cache: yes
@@ -99,9 +99,6 @@
 - name: Update timezone
   template: src=timezone.j2 dest=/etc/timezone
   notify: update tzdata
-
-- name: Install railsless deploy
-  command: gem install -q --no-verbose --no-ri --no-rdoc railsless-deploy -s http://gemcutter.org
 
 - name: Download composer
   get_url: url=https://getcomposer.org/installer dest=/tmp/composer-installer.php mode=0755
