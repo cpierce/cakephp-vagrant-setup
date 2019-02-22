@@ -1,11 +1,11 @@
 # Vagrant Setup for CakePHP 3.x
 
-This will generate the config files needed to get your vagrant environment setup.
+This will generate the config files needed to get your vagrant environment setup for cakePHP running on Ubuntu 18.04 with PHP 7.2 on nginx.
 
 ## Prerequisites
 
-- Virtualbox >= 5.1
-- Vagrant >= 2.0.1
+- Virtualbox >= 6.0
+- Vagrant >= 2.2.2
 - Git
 - Root access to your local machine
 
