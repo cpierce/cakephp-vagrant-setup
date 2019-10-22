@@ -67,7 +67,7 @@ $hostname = $options['hostname'];
 $vagrant_file = <<<VAGRANT_FILE_CONTENTS
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-Vagrant.require_version ">= 2.2.2"
+Vagrant.require_version ">= 2.2.6"
 
 VAGRANT_API_VERSION = "2"
 GUEST_HOSTNAME = "$hostname"
