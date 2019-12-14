@@ -1,5 +1,5 @@
 ---
-- hosts: standalone
+- hosts: dev
 
   vars_files:
     - vars.yml
