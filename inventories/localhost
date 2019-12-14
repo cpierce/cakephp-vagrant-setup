@@ -1,5 +1,5 @@
 # localhost inventory
 127.0.0.1
 
-[standalone]
+[dev]
 127.0.0.1
