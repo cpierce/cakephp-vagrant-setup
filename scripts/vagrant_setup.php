@@ -81,7 +81,7 @@ GUEST_CPU_LIMIT = "$cpu_limit"
 
 Vagrant.configure(VAGRANT_API_VERSION) do |config|
 
-    config.vm.box = "bento/ubuntu-18.04"
+    config.vm.box = "bento/ubuntu-20.04"
     config.vm.hostname = GUEST_HOSTNAME
     config.vm.network "private_network", ip: GUEST_NETWORK_IP
     config.vm.network "forwarded_port", guest: 80, host: 8080

@@ -75,4 +75,4 @@
   tags: composer
 
 - name: PHP fpm log permissions
-  file: path=/var/log/php7.2-fpm.log state=touch mode=0644
+  file: path=/var/log/php7.4-fpm.log state=touch mode=0644
