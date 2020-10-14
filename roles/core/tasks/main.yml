@@ -22,7 +22,7 @@
     - nodejs
 
     # Database
-    - mysql-server-5.7
+    - mysql-server
 
     # Web Dev
     - nginx
