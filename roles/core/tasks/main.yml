@@ -20,8 +20,6 @@
     - redis-server
     - npm
     - nodejs
-    - python-setuptools
-    - python-mysqldb
 
     # Database
     - mysql-server-5.7
