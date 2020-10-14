@@ -6,7 +6,14 @@
   service: name=mysql state=started
 
 - name: Create my_app user
-  community.mysql.mysql_user: name=my_app host=% password=secret priv=*.*:ALL state=present
+  community.mysql.mysql_user: 
+    name:my_app
+    host:%
+    password:secret
+    priv:*.*:ALL
+    state=present
 
 - name: Create my_app database
-community.mysql.mysql_db: name=my_app state=present encoding=utf8
+community.mysql.mysql_db:
+  name:my_app
+  state:present
