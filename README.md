@@ -4,8 +4,8 @@ This will generate the config files needed to get your vagrant environment setup
 
 ## Prerequisites
 
-- Virtualbox >= 6.0
-- Vagrant >= 2.2.2
+- Virtualbox >= 6.1
+- Vagrant >= 2.2.10
 - Git
 - Root access to your local machine
 
