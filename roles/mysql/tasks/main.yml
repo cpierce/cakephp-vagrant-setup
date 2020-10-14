@@ -8,7 +8,7 @@
 - name: Create my_app user
   community.mysql.mysql_user: 
     name: my_app
-    host_all: yes
+    host: "%"
     password: secret
     priv: "*.*:ALL,GRANT"
     state: present
