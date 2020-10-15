@@ -3,6 +3,8 @@
   service: name=mysql state=started
 
 - name: Create my_app user
+  become: true
+  become_user: root
   community.mysql.mysql_user: 
     login_host: 'localhost'
     login_user: 'root'
@@ -12,7 +14,6 @@
     password: secret
     priv: "*.*:ALL,GRANT"
     state: present
-    become: true
 
 - name: Create my_app database
   community.mysql.mysql_db:
