@@ -1,7 +1,4 @@
 ---
-- name: Copy MySQL file to server
-  template: src=my.cnf.j2 dest=/home/vagrant/.my.cnf owner=vagrant group=vagrant mode=0600
-
 - name: Start MySQL service
   service: name=mysql state=started
 
@@ -17,3 +14,6 @@
   community.mysql.mysql_db:
     name: my_app
     state: present
+
+- name: Copy MySQL file to server
+  template: src=my.cnf.j2 dest=/home/vagrant/.my.cnf owner=vagrant group=vagrant mode=0600
