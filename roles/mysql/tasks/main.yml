@@ -12,6 +12,7 @@
     password: secret
     priv: "*.*:ALL,GRANT"
     state: present
+    become: true
 
 - name: Create my_app database
   community.mysql.mysql_db:
