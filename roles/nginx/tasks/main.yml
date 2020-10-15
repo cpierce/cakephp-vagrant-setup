@@ -8,7 +8,10 @@
 - name: Add mime type for log
   become: true
   become_user: root
-  shell: /usr/bin/replace "txt;" "txt log;" -- /etc/nginx/mime.types
+  lineinfile: 
+      path: /etc/nginx/mime.types
+      regexp: '^text/plain                            txt;'
+      line: text/plain        txt log;
 
 - name: Restart nginx service
   become: true
