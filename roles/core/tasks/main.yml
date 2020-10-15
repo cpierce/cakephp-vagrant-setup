@@ -44,6 +44,7 @@
     - php-ldap
 
     # Other tools
+    - python3-pymysql
     - phpunit
     - ruby
     - ruby-dev
