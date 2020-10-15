@@ -4,6 +4,9 @@
 
 - name: Create my_app user
   community.mysql.mysql_user: 
+    login_host: 'localhost'
+    login_user: 'root'
+    login_password: ''
     name: my_app
     host: "%"
     password: secret
@@ -14,6 +17,9 @@
   community.mysql.mysql_db:
     name: my_app
     state: present
+    login_host: 'localhost'
+    login_user: 'root'
+    login_password: ''
 
 - name: Copy MySQL file to server
   template: src=my.cnf.j2 dest=/home/vagrant/.my.cnf owner=vagrant group=vagrant mode=0600
