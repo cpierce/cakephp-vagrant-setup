@@ -2,7 +2,7 @@
 - name: Start MySQL service
   service: name=mysql state=started
 
-- name: Change the authentication plugin of MySQL root user to mysql_native_password
+- name: Change the authentication plugin for MySQL
   become: true
   become_user: root
   shell: mysql -u root -e 'UPDATE mysql.user SET plugin="mysql_native_password" WHERE user="root" AND host="localhost"'
