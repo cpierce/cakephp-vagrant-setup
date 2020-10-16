@@ -1,5 +1,7 @@
 ---
 - name: Start MySQL service
+  become: true
+  become_user: root
   service: name=mysql state=started
 
 - name: Change the authentication plugin for MySQL
