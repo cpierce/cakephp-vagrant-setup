@@ -28,6 +28,7 @@
     state: present
 
 - name: Create my_app database
+  no_log: true
   community.mysql.mysql_db:
     name: my_app
     state: present
