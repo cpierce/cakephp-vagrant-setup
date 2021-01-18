@@ -36,5 +36,14 @@
     login_user: 'my_app'
     login_password: 'secret'
 
+- name: Create debug_kit database
+  no_log: true
+  community.mysql.mysql_db:
+    name: debug_kit
+    state: present
+    login_host: 'localhost'
+    login_user: 'my_app'
+    login_password: 'secret'
+
 - name: Copy MySQL file to server
   template: src=my.cnf.j2 dest=/home/vagrant/.my.cnf owner=vagrant group=vagrant mode=0600
