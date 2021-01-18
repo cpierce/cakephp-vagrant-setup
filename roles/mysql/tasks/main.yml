@@ -32,8 +32,8 @@
     name: my_app
     state: present
     login_host: 'localhost'
-    login_user: 'root'
-    login_password: ''
+    login_user: 'my_app'
+    login_password: 'secret'
 
 - name: Copy MySQL file to server
   template: src=my.cnf.j2 dest=/home/vagrant/.my.cnf owner=vagrant group=vagrant mode=0600
