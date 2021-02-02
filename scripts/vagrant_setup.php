@@ -101,8 +101,8 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
         :mount_options => ['actimeo=2']
 
     config.vm.provision "shell", inline: <<-SHELL
-        apt-get update
-        apt-get install -y -qq ansible git
+        DEBIAN_FRONTEND=noninteractive apt-get update
+        DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ansible git
         ansible-galaxy collection install community.mysql
         ssh -T git@github.com -o StrictHostKeyChecking=no
         PYTHONUNBUFFERED=1 ansible-pull \
