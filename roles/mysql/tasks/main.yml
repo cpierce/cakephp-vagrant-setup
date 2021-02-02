@@ -17,7 +17,7 @@
 - name: Create my_app user
   become: true
   become_user: root
-  community.mysql.mysql_user: 
+  community.mysql.mysql_user:
     login_host: 'localhost'
     login_user: 'root'
     login_password: ''
